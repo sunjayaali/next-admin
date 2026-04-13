@@ -1,52 +1,32 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
-  useSidebar,
-} from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import { Plus, GalleryVerticalEnd, ChevronsUpDown } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
+  BreadcrumbList,
   BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -59,67 +39,103 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <SidebarProvider>
-          <Sidebar collapsible="icon">
-            <SidebarHeader>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <SidebarMenuButton
-                        size="lg"
-                        className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+    <html lang="en" className={cn("antialiased", geist.className)}>
+      <body>
+        <TooltipProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+                <div className="flex items-center gap-2 px-4">
+                  <SidebarTrigger className="-ml-1" />
+                  <Separator
+                    orientation="vertical"
+                    className="mr-2 data-[orientation=vertical]:h-4"
+                  />
+                  <Breadcrumb>
+                    <BreadcrumbList>
+                      <BreadcrumbItem className="hidden md:block">
+                        <BreadcrumbLink href="#">
+                          Build Your Application
+                        </BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator className="hidden md:block" />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </div>
+              </header>
+              {/* <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+          </div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+        </div> */}
+
+              <Collapsible>
+                <CollapsibleTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
+                  >
+                    <ChevronRightIcon className="transition-transform group-data-[state=open]:rotate-90" />
+                    <FolderIcon /> Folder1
+                  </Button>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-1 ml-5 style-lyra:ml-4">
+                  <Button
+                    // key={fileItem.name}
+                    variant="link"
+                    size="sm"
+                    className="w-full justify-start gap-2 text-foreground"
+                  >
+                    <FileIcon />
+                    Item 1{/* <span>{fileItem.name}</span> */}
+                  </Button>
+                  <Button
+                    // key={fileItem.name}
+                    variant="link"
+                    size="sm"
+                    className="w-full justify-start gap-2 text-foreground"
+                  >
+                    <FileIcon />
+                    Item 2{/* <span>{fileItem.name}</span> */}
+                  </Button>
+                  <Collapsible>
+                    <CollapsibleTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground"
                       >
-                        <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                          <GalleryVerticalEnd className="size-4"></GalleryVerticalEnd>
-                        </div>
-                        <ChevronsUpDown className="ml-auto" />
-                      </SidebarMenuButton>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-                      align="start"
-                      side="right"
-                      // side={isMobile ? "bottom" : "right"}
-                      sideOffset={4}
-                    >
-                      {/* <DropdownMenuLabel className="text-xs text-muted-foreground">
-                        Teams
-                      </DropdownMenuLabel> */}
-                      <DropdownMenuItem>
-                        Profile
-                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </SidebarMenuItem>
-              </SidebarMenu>
-              <span className="text-sm font-medium">My App</span>
-            </SidebarHeader>
-
-            <SidebarContent>
-              <SidebarGroup>
-                <SidebarGroupLabel>Application</SidebarGroupLabel>
-                <SidebarGroupAction>
-                  <Plus /> <span className="sr-only">Add Project</span>
-                </SidebarGroupAction>
-                <SidebarGroupContent></SidebarGroupContent>
-              </SidebarGroup>
-              <SidebarGroup />
-            </SidebarContent>
-
-            <SidebarFooter />
-          </Sidebar>
-
-          <SidebarInset>
-            <main>
-              <SidebarTrigger />
-              {children}
-            </main>
-          </SidebarInset>
-        </SidebarProvider>
+                        <ChevronRightIcon className="transition-transform group-data-[state=open]:rotate-90" />
+                        <FolderIcon />
+                        Folder 2
+                      </Button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-1 ml-5 style-lyra:ml-4">
+                      <Button
+                        // key={fileItem.name}
+                        variant="link"
+                        size="sm"
+                        className="w-full justify-start gap-2 text-foreground"
+                      >
+                        <FileIcon />
+                        Item 3{/* <span>{fileItem.name}</span> */}
+                      </Button>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </CollapsibleContent>
+              </Collapsible>
+              <main className="p-4">{children}</main>
+            </SidebarInset>
+          </SidebarProvider>
+        </TooltipProvider>
       </body>
     </html>
   );
