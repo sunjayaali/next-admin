@@ -126,7 +126,7 @@ export default function Page() {
           <h3 className="text-2xl">h3. Heading</h3>
           <h4 className="text-xl">h4. Heading</h4>
 
-          <blockquote className="mt-6 border-l-2 border-l-green-500 pl-6 italic">
+          <blockquote className="mt-6 border-l-4 border-l-green-500 pl-6 italic">
             &quot;After all,&quot; he said, &quot;everyone enjoys a good joke,
             so it&apos;s only fair that they should pay for the privilege.&quot;
           </blockquote>
