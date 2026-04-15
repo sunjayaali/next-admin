@@ -1,616 +1,87 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import Link from "next/link";
+import { HeartIcon } from "lucide-react";
 
 export default function Page() {
   return (
     <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Buttons</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table className="border border-border">
-            <TableHeader>
-              <TableRow>
-                <TableHead className="text-center">Normal</TableHead>
-                <TableHead className="text-center">Large</TableHead>
-                <TableHead className="text-center">Small</TableHead>
-                <TableHead className="text-center">Extra Small</TableHead>
-                <TableHead className="text-center">Disabled</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button asChild>
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button size="lg" asChild>
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button size="sm" asChild>
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button size="xs" asChild>
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button className="opacity-50 cursor-not-allowed" asChild>
-                    <Link href="#" className="pointer-events-none">
-                      Default
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80 opacity-50 cursor-not-allowed"
-                    asChild
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Secondary
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="bg-green-100 text-green-800 hover:bg-green-200"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="bg-green-100 text-green-800 hover:bg-green-200"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="bg-green-100 text-green-800 hover:bg-green-200"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="bg-green-100 text-green-800 hover:bg-green-200"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="bg-green-100 text-green-800 hover:bg-green-200 opacity-50 cursor-not-allowed"
-                    asChild
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Success
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="bg-blue-100 text-blue-800 hover:bg-blue-200"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="bg-blue-100 text-blue-800 hover:bg-blue-200"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="bg-blue-100 text-blue-800 hover:bg-blue-200"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="bg-blue-100 text-blue-800 hover:bg-blue-200"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="bg-blue-100 text-blue-800 hover:bg-blue-200 opacity-50 cursor-not-allowed"
-                    asChild
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Info
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200 opacity-50 cursor-not-allowed"
-                    asChild
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Warning
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="bg-red-100 text-red-800 hover:bg-red-200"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="bg-red-100 text-red-800 hover:bg-red-200"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="bg-red-100 text-red-800 hover:bg-red-200"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="bg-red-100 text-red-800 hover:bg-red-200"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="bg-red-100 text-red-800 hover:bg-red-200 opacity-50 cursor-not-allowed"
-                    asChild
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Danger
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Outline Buttons</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table className="border border-border">
-            <TableHeader>
-              <TableRow>
-                <TableHead className="text-center">Normal</TableHead>
-                <TableHead className="text-center">Large</TableHead>
-                <TableHead className="text-center">Small</TableHead>
-                <TableHead className="text-center">Extra Small</TableHead>
-                <TableHead className="text-center">Disabled</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button asChild variant="outline">
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button size="lg" asChild variant="outline">
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button size="sm" asChild variant="outline">
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button size="xs" asChild variant="outline">
-                    <Link href="#">Default</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="opacity-50 cursor-not-allowed"
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Default
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-secondary text-secondary-foreground hover:bg-secondary/20"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    variant="outline"
-                    className="border-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    variant="outline"
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    variant="outline"
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  >
-                    <Link href="#">Secondary</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80 opacity-50 cursor-not-allowed"
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Secondary
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-green-200 text-green-700 hover:bg-green-100"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    variant="outline"
-                    className="border-green-100 text-green-700 hover:bg-green-100"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    variant="outline"
-                    className="border-green-100 text-green-700 hover:bg-green-100"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    variant="outline"
-                    className="border-green-100 text-green-700 hover:bg-green-100"
-                  >
-                    <Link href="#">Success</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="border-green-100 text-green-700 hover:bg-green-100 opacity-50 cursor-not-allowed"
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Success
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-blue-100 text-blue-800 hover:bg-blue-100"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    variant="outline"
-                    className="border-blue-100 text-blue-800 hover:bg-blue-100"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    variant="outline"
-                    className="border-blue-100 text-blue-800 hover:bg-blue-100"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    variant="outline"
-                    className="border-blue-100 text-blue-800 hover:bg-blue-100"
-                  >
-                    <Link href="#">Info</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="border-blue-100 text-blue-800 hover:bg-blue-100 opacity-50 cursor-not-allowed"
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Info
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="border-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="border-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="border-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="border-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Warning</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="border-yellow-100 text-yellow-800 hover:bg-yellow-100 opacity-50 cursor-not-allowed"
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Warning
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="border-r text-center">
-                  <Button
-                    asChild
-                    className="border-red-100 text-red-800 hover:bg-red-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="border-r text-center">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="border-red-100 text-red-800 hover:bg-red-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    asChild
-                    className="border-red-100 text-red-800 hover:bg-red-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    size="xs"
-                    asChild
-                    className="border-red-100 text-red-800 hover:bg-red-100"
-                    variant="outline"
-                  >
-                    <Link href="#">Danger</Link>
-                  </Button>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button
-                    className="border-red-100 text-red-800 hover:bg-red-100 opacity-50 cursor-not-allowed"
-                    asChild
-                    variant="outline"
-                  >
-                    <Link href="#" className="pointer-events-none">
-                      Danger
-                    </Link>
-                  </Button>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <div className="card shadow">
+        <div className="card-body">
+          <div className="card-title">Buttons</div>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-xs">Xsmall</button>
+            <button className="btn btn-sm">Small</button>
+            <button className="btn">Default</button>
+            <button className="btn btn-lg">Large</button>
+            <button className="btn btn-xl">Xlarge</button>
+            <button className="btn btn-wide">Wide</button>
+          </div>
+          <div className="divider" />
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-neutral">Neutral</button>
+            <button className="btn btn-primary">Primary</button>
+            <button className="btn btn-secondary">Secondary</button>
+            <button className="btn btn-accent">Accent</button>
+            <button className="btn btn-info">Info</button>
+            <button className="btn btn-success">Success</button>
+            <button className="btn btn-warning">Warning</button>
+            <button className="btn btn-error">Error</button>
+            <button className="btn btn-ghost">Ghost</button>
+            <button className="btn btn-disabled">Disabled</button>
+          </div>
+          <div className="divider" />
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-soft">Default</button>
+            <button className="btn btn-soft btn-primary">Primary</button>
+            <button className="btn btn-soft btn-secondary">Secondary</button>
+            <button className="btn btn-soft btn-accent">Accent</button>
+            <button className="btn btn-soft btn-info">Info</button>
+            <button className="btn btn-soft btn-success">Success</button>
+            <button className="btn btn-soft btn-warning">Warning</button>
+            <button className="btn btn-soft btn-error">Error</button>
+          </div>
+          <div className="divider" />
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-outline">Default</button>
+            <button className="btn btn-outline btn-primary">Primary</button>
+            <button className="btn btn-outline btn-secondary">Secondary</button>
+            <button className="btn btn-outline btn-accent">Accent</button>
+            <button className="btn btn-outline btn-info">Info</button>
+            <button className="btn btn-outline btn-success">Success</button>
+            <button className="btn btn-outline btn-warning">Warning</button>
+            <button className="btn btn-outline btn-error">Error</button>
+          </div>
+          <div className="divider" />
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-dash">Default</button>
+            <button className="btn btn-dash btn-primary">Primary</button>
+            <button className="btn btn-dash btn-secondary">Secondary</button>
+            <button className="btn btn-dash btn-accent">Accent</button>
+            <button className="btn btn-dash btn-info">Info</button>
+            <button className="btn btn-dash btn-success">Success</button>
+            <button className="btn btn-dash btn-warning">Warning</button>
+            <button className="btn btn-dash btn-error">Error</button>
+          </div>
+          <div className="divider" />
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-block">block</button>
+          </div>
+          <div className="divider" />
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 items-center justify-center">
+            <button className="btn btn-square">
+              <HeartIcon />
+            </button>
+            <button className="btn btn-circle">
+              <HeartIcon />
+            </button>
+            <button className="btn btn-square">
+              <span className="loading loading-spinner"></span>
+            </button>
+            <button className="btn">
+              <span className="loading loading-spinner"></span>
+              loading
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

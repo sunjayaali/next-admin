@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { CheckIcon, InfoIcon, TriangleAlertIcon } from "lucide-react";
 import * as React from "react";
+import { useRef } from "react";
 
 export default function Page() {
   const [progress, setProgress] = React.useState(13);
@@ -20,8 +21,72 @@ export default function Page() {
     return () => clearTimeout(timer);
   }, []);
 
+  const ref = useRef<HTMLDialogElement>(null);
+
   return (
     <div className="space-y-4">
+      <div className="card shadow">
+        <div className="card-body">
+          <div className="grid grid-flow-col gap-2">
+            <div className="rounded">
+              <div className="bg-primary text-primary-content p-4">
+                Active content
+              </div>
+              <div className="bg-primary-content text-primary p-4">
+                Disabled / secondary content
+              </div>
+            </div>
+            <div className="rounded">
+              <div className="bg-secondary text-secondary-content p-4">
+                Active content
+              </div>
+              <div className="bg-secondary-content text-secondary p-4">
+                Disabled / secondary content
+              </div>
+            </div>
+            <div className="rounded">
+              <div className="bg-accent text-accent-content p-4">
+                Active content
+              </div>
+              <div className="bg-accent-content text-accent p-4">
+                Disabled / secondary content
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button className="btn" onClick={() => ref.current?.showModal()}>
+        open modal
+      </button>
+      <dialog ref={ref} className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">Press ESC key or click outside to close</p>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+
+      {/* The button to open modal */}
+      <a href="#my_modal_8" className="btn">
+        open modal
+      </a>
+
+      {/* Put this part before </body> tag */}
+      <div className="modal" role="dialog" id="my_modal_8">
+        <div className="modal-box">
+          <h3 className="text-lg font-bold">Hello!</h3>
+          <p className="py-4">This modal works with anchor links</p>
+          <div className="modal-action">
+            <a href="#" className="btn">
+              Yay!
+            </a>
+          </div>
+        </div>
+      </div>
+
       <Card>
         <CardHeader>
           <CardTitle>Alerts</CardTitle>
