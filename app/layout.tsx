@@ -55,43 +55,50 @@ export default function RootLayout({
               className="drawer-overlay"
             ></label>
 
-            <div className="flex min-h-full flex-col items-start bg-base-200 w-64">
-              <ul className="menu w-full grow">
-                <li>
-                  <button>
-                    <HomeIcon className="w-4" />
-                    <span className="">Home</span>
-                  </button>
-                </li>
-                <li>
-                  <details open={pathname.startsWith("/ui")}>
-                    <summary>UI Elements</summary>
-                    <ul>
-                      <li>
-                        <Link
-                          href="/ui/general"
-                          className={
-                            pathname === "/ui/general" ? "menu-active" : ""
-                          }
-                        >
-                          General
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/ui/buttons"
-                          className={
-                            pathname === "/ui/buttons" ? "menu-active" : ""
-                          }
-                        >
-                          Buttons
-                        </Link>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-              </ul>
-            </div>
+            <ul className="menu bg-base-200 min-h-full w-64">
+              <li>
+                <button>
+                  <HomeIcon className="w-4" />
+                  <span className="">Home</span>
+                </button>
+              </li>
+              <li>
+                <details open={pathname.startsWith("/ui")}>
+                  <summary>UI Elements</summary>
+                  <ul>
+                    <li>
+                      <Link
+                        href="/ui/general"
+                        className={
+                          pathname === "/ui/general" ? "menu-active" : ""
+                        }
+                      >
+                        General
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/ui/buttons"
+                        className={
+                          pathname === "/ui/buttons" ? "menu-active" : ""
+                        }
+                      >
+                        Buttons
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <Link
+                  href="/forms"
+                  className={pathname === "/forms" ? "menu-active" : ""}
+                >
+                  <HomeIcon className="w-4" />
+                  <span className="">Forms</span>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </body>
