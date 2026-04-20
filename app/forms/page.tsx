@@ -1,8 +1,18 @@
 "use client";
 
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox";
 import { MailIcon, SearchIcon } from "lucide-react";
+import { useState } from "react";
 
 export default function Page() {
+  const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
   return (
     <div className="space-y-4">
       <h1 className="font-title font-bold text-3xl">Forms</h1>
@@ -10,6 +20,20 @@ export default function Page() {
         <div className="card shadow">
           <div className="card-body">
             <h2 className="card-title">Quick Example</h2>
+
+            <daisy-multiselect
+              max-selections="1"
+              searchable
+              placeholder="Select your favorite fruits"
+            >
+              <option value="apple">Apple</option>
+              <option value="banana">Banana</option>
+              <option value="cherry">Cherry</option>
+              <option value="date">Date</option>
+              <option value="elderberry">Elderberry</option>
+              <option value="fig">Fig</option>
+              <option value="grape">Grape</option>
+            </daisy-multiselect>
 
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Email</legend>
@@ -73,7 +97,7 @@ export default function Page() {
               <legend className="fieldset-legend">Datetime</legend>
               <input
                 type="datetime-local"
-                className="input w-full input-primary"
+                className="input w-full "
                 placeholder="Enter password"
               />
             </fieldset>
@@ -291,7 +315,7 @@ export default function Page() {
             <div className="divider" />
 
             <label className="label">
-              <input type="checkbox" defaultChecked className="toggle" />
+              <input type="checkbox" defaultChecked className="select" />
               Toggle
             </label>
             <label className="label">

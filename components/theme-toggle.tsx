@@ -5,6 +5,7 @@ import { SunIcon, MoonIcon } from "lucide-react";
 
 export default function ThemeToggle() {
   const [isChecked, setChecked] = useState(() => {
+    if (typeof window === "undefined") return false;
     return localStorage.getItem("theme") === "dim";
   });
 

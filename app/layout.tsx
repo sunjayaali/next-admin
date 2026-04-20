@@ -7,6 +7,9 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./globals.css";
+import Script from "next/script";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  console.log(pathname);
+  const [queryClient] = useState(() => new QueryClient());
 
   return (
     <html lang="en" className={cn("antialiased", inter.className)}>
+      <Script src="/daisy-multiselect.js" strategy="afterInteractive"></Script>
+
       <body>
         <div className="drawer lg:drawer-open">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -45,7 +50,11 @@ export default function RootLayout({
               </div>
             </nav>
 
-            <div className="p-4">{children}</div>
+            <div className="p-4">
+              <QueryClientProvider client={queryClient}>
+                {children}
+              </QueryClientProvider>
+            </div>
           </div>
 
           <div className="drawer-side">
