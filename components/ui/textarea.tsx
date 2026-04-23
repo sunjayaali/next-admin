@@ -5,7 +5,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 const textareaVariants = cva("textarea", {
   variants: {
-    color: {
+    tone: {
       neutral: "textarea-neutral",
       primary: "textarea-primary",
       secondary: "textarea-secondary",
@@ -26,11 +26,12 @@ const textareaVariants = cva("textarea", {
       ghost: "textarea-ghost",
     },
   },
+  defaultVariants: {},
 });
 
 function Textarea({
   className,
-  color,
+  tone,
   size,
   variant,
   ...props
@@ -40,7 +41,7 @@ function Textarea({
       data-slot="textarea"
       className={cn(
         "w-full",
-        textareaVariants({ color, size, variant }),
+        textareaVariants({ tone, size, variant }),
         className,
       )}
       {...props}

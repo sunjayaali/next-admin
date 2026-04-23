@@ -4,7 +4,7 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 
 const buttonVariants = cva("btn", {
   variants: {
-    color: {
+    tone: {
       neutral: "btn-neutral",
       primary: "btn-primary",
       secondary: "btn-secondary",
@@ -41,14 +41,14 @@ const buttonVariants = cva("btn", {
 function Button({
   className,
   size,
-  color,
+  tone,
   variant,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ size, color, variant, className }))}
+      className={cn(buttonVariants({ size, tone, variant, className }))}
       {...props}
     />
   );
