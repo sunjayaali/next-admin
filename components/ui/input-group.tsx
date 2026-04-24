@@ -12,7 +12,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"label">) {
     <label
       data-slot="input-group"
       role="group"
-      className={cn("input", className)}
+      className={cn("input w-full", className)}
       {...props}
     />
   );
@@ -116,7 +116,7 @@ function InputGroupInput({
   return (
     <input
       data-slot="input-group-control"
-      className={cn("w-full", className)}
+      className={cn(className)}
       {...props}
     />
   );
@@ -141,6 +141,8 @@ function InputGroupTextarea({
 export {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
 };
-
