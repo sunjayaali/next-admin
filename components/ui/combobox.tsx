@@ -170,10 +170,12 @@ function ComboboxChips({
   return (
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
-      className={cn("input w-full h-auto px-1.5 py-1", className)}
+      className={cn("input w-full h-auto py-1", className)}
       {...props}
     >
-      <div className="flex flex-wrap gap-1 min-h-8 items-center">{children}</div>
+      <div className="flex flex-wrap gap-1 min-h-8 items-center w-full">
+        {children}
+      </div>
     </ComboboxPrimitive.Chips>
   );
 }
@@ -193,22 +195,19 @@ function ComboboxChip({
   return (
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
-      className={cn(className)}
-      render={
-        <span className="badge badge-ghost">
-          {children}
-          {showRemove && (
-            <ComboboxPrimitive.ChipRemove
-              data-slot="combobox-chip-remove"
-              className="ml-1 opacity-50 hover:opacity-100"
-            >
-              <XIcon className="size-4" />
-            </ComboboxPrimitive.ChipRemove>
-          )}
-        </span>
-      }
+      className={cn("badge badge-ghost px-1.5", className)}
       {...props}
-    ></ComboboxPrimitive.Chip>
+    >
+      {children}
+      {showRemove && (
+        <ComboboxPrimitive.ChipRemove
+          data-slot="combobox-chip-remove"
+          className="ml-1 opacity-50 hover:opacity-100"
+        >
+          <XIcon className="size-4" />
+        </ComboboxPrimitive.ChipRemove>
+      )}
+    </ComboboxPrimitive.Chip>
   );
 }
 
@@ -219,7 +218,7 @@ function ComboboxChipsInput({
   return (
     <ComboboxPrimitive.Input
       data-slot="combobox-chip-input"
-      className={cn("min-w-16 flex-1 outline-none pl-2", className)}
+      className={cn("min-w-16 flex-1 outline-none", className)}
       {...props}
     />
   );
