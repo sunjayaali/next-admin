@@ -5,7 +5,7 @@ import ThemeToggle from "./theme-toggle";
 
 export default function Navbar() {
   return (
-    <nav className="navbar w-full bg-base-100 shadow sticky top-0 z-10">
+    <nav className="navbar sticky top-0 z-10 backdrop-blur shadow">
       <div className="navbar-start">
         <label
           htmlFor="my-drawer"

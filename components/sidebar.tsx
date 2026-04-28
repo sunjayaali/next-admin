@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Sidebar() {
   const pathname = usePathname();
   return (
-    <div className="drawer-side">
+    <div className="drawer-side z-20">
       <label
         htmlFor="my-drawer"
         aria-label="close sidebar"
@@ -39,6 +39,14 @@ export default function Sidebar() {
                   className={pathname === "/ui/buttons" ? "menu-active" : ""}
                 >
                   Buttons
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ui/combobox"
+                  className={pathname === "/ui/combobox" ? "menu-active" : ""}
+                >
+                  Combobox
                 </Link>
               </li>
             </ul>
