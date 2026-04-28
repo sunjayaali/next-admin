@@ -23,8 +23,9 @@ export default function Page() {
       foo: "",
       fruits: [] as Fruit[],
     },
-    onSubmit: ({ value }) => {
+    onSubmit: async ({ value }) => {
       console.log("onSubmit", value);
+      await new Promise((resolve) => setTimeout(resolve, 500));
     },
   });
 
@@ -130,7 +131,14 @@ export default function Page() {
                 >
                   {([canSubmit, isSubmitting]) => {
                     return (
-                      <button type="submit" className="btn btn-neutral">
+                      <button
+                        type="submit"
+                        className="btn btn-neutral"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting && (
+                          <span className="loading loading-spinner"></span>
+                        )}
                         Submit
                       </button>
                     );
