@@ -14,6 +14,7 @@ import {
   useComboboxAnchor,
 } from "@/components/ui/combobox";
 import { useForm } from "@tanstack/react-form";
+import Select, { Options } from "react-select";
 
 export default function Page() {
   const anchor = useComboboxAnchor();
@@ -22,6 +23,7 @@ export default function Page() {
       fruit: null as Fruit | null,
       foo: "",
       fruits: [] as Fruit[],
+      fruits2: [] as Options<Fruit>,
     },
     onSubmit: async ({ value }) => {
       console.log("onSubmit", value);
@@ -121,6 +123,22 @@ export default function Page() {
                         </ComboboxList>
                       </ComboboxContent>
                     </Combobox>
+                  </fieldset>
+                )}
+              </form.Field>
+
+              <form.Field name="fruits2">
+                {(field) => (
+                  <fieldset className="fieldset">
+                    <legend className="fieldset-legend">React Select</legend>
+                    <Select
+                      isMulti
+                      value={field.state.value}
+                      onChange={(values) => {
+                        field.handleChange(values);
+                      }}
+                      options={fruits.map((fruit) => fruit)}
+                    />
                   </fieldset>
                 )}
               </form.Field>
