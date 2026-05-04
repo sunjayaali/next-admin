@@ -20,10 +20,6 @@ const navItems: NavItem[] = [
       { label: "Forms", href: "/components/forms" },
     ],
   },
-  {
-    label: "Foo",
-    href: "/foo",
-  },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
