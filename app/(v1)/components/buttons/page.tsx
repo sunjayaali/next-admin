@@ -30,7 +30,7 @@ export default function Page() {
           <div className="divider" />
 
           <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-soft btn-neutral">Neutral</button>
+            <button className="btn btn-soft">Default</button>
             <button className="btn btn-soft btn-primary">Primary</button>
             <button className="btn btn-soft btn-secondary">Secondary</button>
             <button className="btn btn-soft btn-accent">Accent</button>
@@ -42,7 +42,7 @@ export default function Page() {
           <div className="divider" />
 
           <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-outline btn-neutral">Neutral</button>
+            <button className="btn btn-outline">Default</button>
             <button className="btn btn-outline btn-primary">Primary</button>
             <button className="btn btn-outline btn-secondary">Secondary</button>
             <button className="btn btn-outline btn-accent">Accent</button>
@@ -54,7 +54,7 @@ export default function Page() {
           <div className="divider" />
 
           <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-dash btn-neutral">Neutral</button>
+            <button className="btn btn-dash">Default</button>
             <button className="btn btn-dash btn-primary">Primary</button>
             <button className="btn btn-dash btn-secondary">Secondary</button>
             <button className="btn btn-dash btn-accent">Accent</button>
