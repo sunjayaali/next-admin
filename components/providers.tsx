@@ -1,7 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { ChipProps } from "@progress/kendo-react-buttons";
 import {
   AutoCompleteProps,
   AutoCompletePropsContext,
@@ -11,26 +9,27 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AllCommunityModule } from "ag-grid-community";
 import { AgGridProvider } from "ag-grid-react";
-import { cloneElement, FC, useState } from "react";
+import { FC, useState } from "react";
 
 function multiSelectProvider({ children }: { children: React.ReactNode }) {
   return (
     <MultiSelectPropsContext.Provider
       value={(props: MultiSelectProps) => {
         return {
+          className: "border-none! shadow-none! text-inherit! bg-inherit!",
           autoClose: false,
-          tagRender: (_, tag: React.ReactElement<ChipProps>) => {
-            return cloneElement(tag, {
-              ...tag.props,
-              className: cn("badge! badge-ghost", tag.props.className),
-            });
-          },
+          // tagRender: (_, tag: React.ReactElement<ChipProps>) => {
+          //   return cloneElement(tag, {
+          //     ...tag.props,
+          //     className: cn("badge! badge-ghost", tag.props.className),
+          //   });
+          // },
           // itemRender: (li, itemProps) => {
           //   const itemChildren = <>{itemProps.dataItem}</>;
           //   return cloneElement(li, li.props, itemChildren);
           // },
           popupSettings: {
-            popupClass: "menu w-full bg-base-200!",
+            popupClass: "",
             animate: false,
           },
           ...props,
@@ -49,7 +48,7 @@ function AutoCompleteProvider({ children }: { children: React.ReactNode }) {
         return {
           className: "border-none! shadow-none! text-inherit! bg-inherit!",
           popupSettings: {
-            popupClass: "menux w-full",
+            popupClass: "",
             animate: false,
           },
           // itemRender: (li, itemProps) => {
@@ -85,8 +84,7 @@ const providers: FC<{ children: React.ReactNode }>[] = [
 ];
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  console.log("Providers rendered");
-  return providers.reduce((acc, Provider) => {
+  return providers.reduceRight((acc, Provider) => {
     return <Provider>{acc}</Provider>;
   }, children);
 }
