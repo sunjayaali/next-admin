@@ -8,9 +8,7 @@ import {
 } from "@/components/ui/input-group";
 import { Textarea } from "@/components/ui/textarea";
 import { AutoComplete, MultiSelect } from "@progress/kendo-react-dropdowns";
-import { clone } from "lodash";
 import { ChevronDownIcon, MailIcon, SearchIcon, XIcon } from "lucide-react";
-import { cloneElement } from "react";
 
 export default function Page() {
   const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
@@ -180,12 +178,12 @@ export default function Page() {
             <fieldset className="fieldset">
               <legend>MultiSelect</legend>
 
-              <label htmlFor="" className="input w-full">
+              <label htmlFor="" className="input w-full pl-1">
                 <MultiSelect
+                  placeholder="Placeholder"
                   textField="label"
                   dataItemKey="value"
                   data={frameworks2}
-                  className="border-none! shadow-none! text-inherit! bg-inherit!"
                 />
               </label>
             </fieldset>
@@ -194,19 +192,10 @@ export default function Page() {
               <legend>Autocomplete</legend>
               <label className="input w-full pl-1">
                 <AutoComplete
-                  placeholder="Select a sport..."
+                  placeholder="Placeholder"
                   data={frameworks2}
                   textField="label"
                   dataItemKey="value"
-                  itemRender={(li, itemProps) => {
-                    console.log(li, itemProps);
-                    return cloneElement(li, {
-                      ...itemProps,
-                    });
-
-                    const itemChildren = <>{itemProps.dataItem}</>;
-                    return cloneElement(li, li.props, itemChildren);
-                  }}
                 />
               </label>
             </fieldset>
