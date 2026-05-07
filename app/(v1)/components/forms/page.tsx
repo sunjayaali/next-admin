@@ -1,14 +1,7 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-import { Textarea } from "@/components/ui/textarea";
 import { AutoComplete, MultiSelect } from "@progress/kendo-react-dropdowns";
-import { ChevronDownIcon, MailIcon, SearchIcon, XIcon } from "lucide-react";
+import { MailIcon, SearchIcon } from "lucide-react";
 
 export default function Page() {
   const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
@@ -28,54 +21,8 @@ export default function Page() {
           <div className="card-body">
             <h2 className="card-title">Quick Example</h2>
 
-            <Input type="text" />
-            <Textarea placeholder="Bio" />
-            <div className="relative flex">
-              <div className="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4">
-                <XIcon className="size-3.5" />
-                <ChevronDownIcon className="size-3.5" />
-              </div>
-            </div>
-            <InputGroup>
-              <InputGroupInput placeholder="My Search..."></InputGroupInput>
-
-              {/* <InputGroupAddon>
-                <SearchIcon />
-              </InputGroupAddon>ioi
-              <InputGroupAddon align="inline-end">
-                <MailIcon />
-              </InputGroupAddon>
-              <InputGroupAddon align="inline-end">
-                <XIcon className="size-3.5" />
-              </InputGroupAddon> */}
-              <InputGroupAddon align="inline-end">
-                <XIcon className="size-3.5" />
-                <ChevronDownIcon className="size-3.5" />
-                {/* </button> */}
-              </InputGroupAddon>
-            </InputGroup>
-
-            <label className="input w-full">
-              <SearchIcon />
-              <input type="search" className="grow" placeholder="Search" />
-              <kbd className="kbd kbd-sm">⌘</kbd>
-              <kbd className="kbd kbd-sm">K</kbd>
-              <button className="btn btn-xs btn-ghost">
-                <ChevronDownIcon className="size-4" />
-              </button>
-            </label>
-
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Email</legend>
-              <InputGroup>
-                <InputGroupInput placeholder="Search ..." />
-                <InputGroupAddon>
-                  {/* <InputGroupText>0/280</InputGroupText> */}
-                  <MailIcon />
-                </InputGroupAddon>
-                {/* <input type="text" className="grow" placeholder="Search" /> */}
-              </InputGroup>
-
               <label className="input validator w-full">
                 <div>
                   <MailIcon />
@@ -89,7 +36,7 @@ export default function Page() {
               </label>
 
               <div className="join">
-                <input type="text" className="input join-item" />
+                <input type="text" className="input join-item w-full" />
                 <button className="btn join-item">Join</button>
               </div>
               <div className="validator-hint hidden">

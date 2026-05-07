@@ -3,9 +3,11 @@
 import { SimpleTable, SortColumn } from "@simple-table/react";
 import "@simple-table/react/styles.css";
 import { useQuery } from "@tanstack/react-query";
+import { useTheme } from "@wrksz/themes/client";
 import { useState } from "react";
 
 export default function Page() {
+  const { resolvedTheme } = useTheme();
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState<SortColumn | null>(null);
 
@@ -95,6 +97,7 @@ export default function Page() {
               setSort(sort);
             }}
             externalSortHandling
+            theme={resolvedTheme === "dark" ? "modern-dark" : "modern-light"}
           />
         </div>
       </div>
