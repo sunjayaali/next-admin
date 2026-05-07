@@ -5,7 +5,6 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +22,7 @@ export default function Layout({
       lang="en"
       className={cn("antialiased", inter.className)}
       data-theme="light"
-      suppressContentEditableWarning
+      suppressHydrationWarning
     >
       <body>
         <Providers>{children}</Providers>

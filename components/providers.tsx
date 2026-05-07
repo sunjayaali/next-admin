@@ -6,7 +6,11 @@ import {
   MultiSelectProps,
   MultiSelectPropsContext,
 } from "@progress/kendo-react-dropdowns";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider as QueryClientProviderBase,
+} from "@tanstack/react-query";
+import { ThemeProvider as ThemeProviderBase } from "@wrksz/themes";
 import { AllCommunityModule } from "ag-grid-community";
 import { AgGridProvider } from "ag-grid-react";
 import { FC, useState } from "react";
@@ -69,15 +73,24 @@ function agGridProvider({ children }: { children: React.ReactNode }) {
   return <AgGridProvider modules={modules}>{children}</AgGridProvider>;
 }
 
-function QueryClientProviderx({ children }: { children: React.ReactNode }) {
+function QueryClientProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProviderBase client={queryClient}>
+      {children}
+    </QueryClientProviderBase>
+  );
+}
+
+function ThemeProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProviderBase themes={["light", "dark"]}>{children}</ThemeProviderBase>
   );
 }
 
 const providers: FC<{ children: React.ReactNode }>[] = [
-  QueryClientProviderx,
+  ThemeProvider,
+  QueryClientProvider,
   agGridProvider,
   multiSelectProvider,
   AutoCompleteProvider,

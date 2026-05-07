@@ -1,27 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { SunIcon, MoonIcon } from "lucide-react";
+import { useTheme } from "@wrksz/themes/client";
+import { MoonIcon, SunIcon } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [isChecked, setChecked] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return localStorage.getItem("theme") === "dim";
-  });
-
-  useEffect(() => {
-    const theme = isChecked ? "dim" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [isChecked]);
+  const { resolvedTheme, setTheme, themes } = useTheme();
 
   return (
     <button className="btn btn-ghost btn-circle">
       <label className="swap swap-rotate">
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={(e) => setChecked(e.target.checked)}
+          className="theme-controller"
+          value="dim"
+          checked={resolvedTheme === themes[1]}
+          onChange={(e) => {
+            setTheme(e.target.checked ? themes[1] : themes[0]);
+          }}
         />
         <SunIcon className="swap-off" />
         <MoonIcon className="swap-on" />
