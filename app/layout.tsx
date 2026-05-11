@@ -1,8 +1,8 @@
 import Providers from "@/components/providers";
 import { cn } from "@/lib/utils";
-import "@progress/kendo-theme-default/dist/all.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "@/app/globals.css";
 
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 

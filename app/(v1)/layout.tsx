@@ -1,8 +1,7 @@
 "use client";
 
-import ThemeToggle from "@/components/theme-toggle";
-import { uuid } from "@tanstack/react-form";
-import { MenuIcon } from "lucide-react";
+import { AppShell, Burger, Group, NavLink } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -26,49 +25,27 @@ const navItems: NavItem[] = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [opened, { toggle }] = useDisclosure();
 
   return (
-    <div className="drawer lg:drawer-open">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Group h="100%" px="md">
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          Header
+        </Group>
+      </AppShell.Header>
 
-      <div className="drawer-content">
-        {/* Page content here */}
-        <nav className="navbar sticky top-0 z-10 backdrop-blur-sm shadow">
-          <div className="navbar-start">
-            <label
-              htmlFor="my-drawer"
-              aria-label="open sidebar"
-              className="btn btn-square btn-ghost lg:hidden"
-            >
-              <MenuIcon />
-            </label>
-          </div>
-          <div className="navbar-center">Navbar Title</div>
-          <div className="navbar-end">
-            <ThemeToggle />
-          </div>
-        </nav>
-        <main className="p-4">{children}</main>
-      </div>
+      <AppShell.Navbar p="md">
+        <RenderMenuItems items={navItems} pathname={pathname} />
+      </AppShell.Navbar>
 
-      <div className="drawer-side">
-        <label
-          htmlFor="my-drawer"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        />
-        {/* Sidebar content here */}
-        {<Menu pathname={pathname} items={navItems} />}
-      </div>
-    </div>
-  );
-}
-
-function Menu({ pathname, items }: { pathname: string; items: NavItem[] }) {
-  return (
-    <ul className="menu bg-base-200 w-64 min-h-full p-4">
-      <RenderMenuItems items={items} pathname={pathname} />
-    </ul>
+      <AppShell.Main>{children}</AppShell.Main>
+    </AppShell>
   );
 }
 
@@ -80,28 +57,22 @@ function RenderMenuItems({
   pathname: string;
 }) {
   return items.map((item) => {
-    if (item.children) {
+    if (!item.children) {
       return (
-        <li key={uuid()}>
-          <details open>
-            <summary>{item.label}</summary>
-            <ul>
-              <RenderMenuItems items={item.children} pathname={pathname} />
-            </ul>
-          </details>
-        </li>
+        <NavLink
+          key={item.label}
+          component={Link}
+          label={item.label}
+          href={item.href!}
+          active={pathname === item.href}
+        />
       );
     }
 
     return (
-      <li key={uuid()}>
-        <Link
-          href={item.href!}
-          className={pathname === item.href ? "menu-active" : ""}
-        >
-          {item.label}
-        </Link>
-      </li>
+      <NavLink key={item.label} label={item.label} defaultOpened>
+        <RenderMenuItems items={item.children} pathname={pathname} />
+      </NavLink>
     );
   });
 }
