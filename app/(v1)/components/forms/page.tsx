@@ -1,20 +1,123 @@
 "use client";
 
-import { AutoComplete, MultiSelect } from "@progress/kendo-react-dropdowns";
 import { MailIcon, SearchIcon } from "lucide-react";
 
+import {
+  Autocomplete,
+  Card,
+  Checkbox,
+  Divider,
+  Group,
+  MultiSelect,
+  NativeSelect,
+  PasswordInput,
+  Radio,
+  Select,
+  SimpleGrid,
+  Stack,
+  Text,
+  Textarea,
+  TextInput,
+} from "@mantine/core";
+
 export default function Page() {
-  const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"];
-  const frameworks2 = [
-    { label: "Next.js", value: "nextjs" },
-    { label: "SvelteKit", value: "sveltekit" },
-    { label: "Nuxt.js", value: "nuxtjs" },
-    { label: "Remix", value: "remix" },
-    { label: "Astro", value: "astro" },
+  const libraries = [
+    {
+      group: "Frontend libraries",
+      items: [
+        { label: "React", value: "react" },
+        { label: "Angular", value: "angular" },
+        { label: "Vue", value: "vue", disabled: true },
+      ],
+    },
+    {
+      group: "Backend libraries",
+      items: [
+        { label: "Express", value: "express" },
+        { label: "Koa", value: "koa" },
+        { label: "Django", value: "django" },
+      ],
+    },
   ];
 
   return (
-    <div className="space-y-4">
+    <div className="">
+      <SimpleGrid cols={2}>
+        <Card withBorder>
+          <Card.Section inheritPadding py="sm" withBorder>
+            <Text fw={600}>Panel heading</Text>
+          </Card.Section>
+
+          <Stack>
+            <TextInput
+              label="Input label"
+              description="Input description"
+              placeholder="Input placeholder"
+            />
+
+            <PasswordInput label="Password" placeholder="Enter your password" />
+
+            <NativeSelect label="Native select" data={libraries} />
+
+            <Textarea label="Textarea label" placeholder="Enter your text" />
+
+            <Autocomplete label="Autocomplete" data={libraries} clearable />
+
+            <MultiSelect label="MultiSelect" data={libraries} clearable />
+
+            <Select label="Select" data={libraries} clearable searchable />
+
+            <TextInput
+              disabled
+              label="Disabled input"
+              placeholder="Can't touch this"
+            />
+
+            <TextInput leftSection={<MailIcon />} />
+          </Stack>
+        </Card>
+
+        <Card withBorder>
+          <Card.Section inheritPadding py="sm" withBorder>
+            <Text fw={600}>Panel heading</Text>
+          </Card.Section>
+
+          <Stack mt="lg">
+            <TextInput size="xs" placeholder="Extra small" />
+            <TextInput size="sm" placeholder="Small" />
+            <TextInput size="md" placeholder="Medium" />
+            <TextInput size="lg" placeholder="Large" />
+            <TextInput size="xl" placeholder="Extra large" />
+
+            <Divider />
+
+            <SimpleGrid cols={2}>
+              <Stack>
+                <Checkbox label="Checkbox" />
+                <Checkbox label="Checkbox checked" defaultChecked />
+                <Checkbox label="Checkbox disabled" disabled />
+                <Checkbox label="Checkbox color" color="teal" />
+              </Stack>
+
+              <Stack>
+                <Radio.Group name="name">
+                  <Group>
+                    <Radio label="Radio" value="radio1-1" />
+                    <Radio
+                      label="Radio checked"
+                      value="radio1-2"
+                      defaultChecked
+                    />
+                    <Radio label="Radio disabled" value="radio1-3" disabled />
+                    <Radio label="Radio color" value="radio1-4" color="teal" />
+                  </Group>
+                </Radio.Group>
+              </Stack>
+            </SimpleGrid>
+          </Stack>
+        </Card>
+      </SimpleGrid>
+
       <h1 className="font-title font-bold text-3xl">Forms</h1>
       <div className="grid grid-1 sm:grid-cols-2 gap-4 items-start">
         <div className="card shadow">
@@ -22,68 +125,9 @@ export default function Page() {
             <h2 className="card-title">Quick Example</h2>
 
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">Email</legend>
-              <label className="input validator w-full">
-                <div>
-                  <MailIcon />
-                </div>
-                <input
-                  type="email"
-                  className=""
-                  placeholder="mail@site.com"
-                  required
-                />
-              </label>
-
-              <div className="join">
-                <input type="text" className="input join-item w-full" />
-                <button className="btn join-item">Join</button>
-              </div>
-              <div className="validator-hint hidden">
-                Enter valid email address
-              </div>
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Password</legend>
-              <input
-                type="password"
-                className="input  w-full"
-                placeholder="Enter password"
-              />
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Tel</legend>
-              <input
-                type="tel"
-                className="input w-full"
-                placeholder="Enter Tel"
-              />
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Disabled</legend>
-              <input
-                type="text"
-                className="input w-full "
-                placeholder="Can't touch this"
-                disabled
-              />
-            </fieldset>
-
-            <fieldset className="fieldset">
               <legend className="fieldset-legend">Pick a file</legend>
               <input type="file" className="file-input w-full" />
               <label className="label">Max size 2MB</label>
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Textarea</legend>
-              <textarea
-                className="textarea w-full"
-                placeholder="bio"
-              ></textarea>
             </fieldset>
 
             <fieldset className="fieldset">
@@ -122,31 +166,6 @@ export default function Page() {
               </label>
             </fieldset>
 
-            <fieldset className="fieldset">
-              <legend>MultiSelect</legend>
-
-              <label htmlFor="" className="input w-full pl-1">
-                <MultiSelect
-                  placeholder="Placeholder"
-                  textField="label"
-                  dataItemKey="value"
-                  data={frameworks2}
-                />
-              </label>
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend>Autocomplete</legend>
-              <label className="input w-full pl-1">
-                <AutoComplete
-                  placeholder="Placeholder"
-                  data={frameworks2}
-                  textField="label"
-                  dataItemKey="value"
-                />
-              </label>
-            </fieldset>
-
             <form>
               <fieldset className="fieldset">
                 <legend className="fieldset-legend">Label</legend>
@@ -169,177 +188,6 @@ export default function Page() {
                 </div>
               </fieldset>
             </form>
-          </div>
-        </div>
-        <div className="card shadow">
-          <div className="card-body">
-            <h2 className="card-title">Size</h2>
-            <input
-              type="text"
-              placeholder="Xsmall"
-              className="input input-xs w-full"
-            />
-            <input
-              type="text"
-              placeholder="Small"
-              className="input input-sm w-full"
-            />
-            <input
-              type="text"
-              placeholder="Medium"
-              className="input input-md w-full"
-            />
-            <input
-              type="text"
-              placeholder="Large"
-              className="input input-lg w-full"
-            />
-            <input
-              type="text"
-              placeholder="Xlarge"
-              className="input input-xl w-full"
-            />
-
-            <div className="divider" />
-            <div className="flex flex-row gap-2">
-              <div className="w-[20%]">
-                <input type="text" placeholder="20%" className="input w-full" />
-              </div>
-              <div className="w-[30%]">
-                <input type="text" placeholder="30%" className="input w-full" />
-              </div>
-              <div className="w-[50%]">
-                <input type="text" placeholder="50%" className="input w-full" />
-              </div>
-            </div>
-            <div className="divider" />
-
-            <input
-              type="text"
-              placeholder="neutral"
-              className="input input-neutral w-full"
-            />
-            <input
-              type="text"
-              placeholder="Primary"
-              className="input input-primary w-full"
-            />
-            <input
-              type="text"
-              placeholder="Secondary"
-              className="input input-secondary w-full"
-            />
-            <input
-              type="text"
-              placeholder="Accent"
-              className="input input-accent w-full"
-            />
-
-            <input
-              type="text"
-              placeholder="Info"
-              className="input input-info w-full"
-            />
-            <input
-              type="text"
-              placeholder="Success"
-              className="input input-success w-full"
-            />
-            <input
-              type="text"
-              placeholder="Warning"
-              className="input input-warning w-full"
-            />
-            <input
-              type="text"
-              placeholder="Error"
-              className="input input-error w-full"
-            />
-
-            <div className="divider" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="label w-full">
-                  <input type="checkbox" className="checkbox" />
-                  Checkbox
-                </label>
-                <label className="label w-full">
-                  <input type="checkbox" defaultChecked className="checkbox" />
-                  Checkbox checked
-                </label>
-                <label className="label w-full">
-                  <input type="checkbox" disabled className="checkbox" />
-                  Checkbox disabled
-                </label>
-                <label className="label w-full">
-                  <input
-                    type="checkbox"
-                    className="checkbox checkbox-primary"
-                  />
-                  Checkbox primary
-                </label>
-              </div>
-              <div>
-                <label className="label w-full">
-                  <input type="radio" name="radio" className="radio" />
-                  Radio
-                </label>
-                <label className="label w-full">
-                  <input
-                    type="radio"
-                    name="radio"
-                    className="radio"
-                    defaultChecked
-                  />
-                  Radio checked
-                </label>
-                <label className="label w-full">
-                  <input type="radio" name="radio" className="radio" disabled />
-                  Radio disabled
-                </label>
-                <label className="label w-full">
-                  <input
-                    type="radio"
-                    name="radio"
-                    className="radio radio-primary"
-                  />
-                  Radio primary
-                </label>
-              </div>
-            </div>
-
-            <div className="divider" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <select defaultValue="Pick a color" className="select">
-                  <option disabled={true}>Pick a color</option>
-                  <option>Crimson</option>
-                  <option>Amber</option>
-                  <option>Velvet</option>
-                </select>
-              </div>
-              <div>
-                <select defaultValue="Pick a color" className="select" disabled>
-                  <option disabled={true}>Pick a color</option>
-                  <option>Crimson</option>
-                  <option>Amber</option>
-                  <option>Velvet</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="divider" />
-
-            <label className="label">
-              <input type="checkbox" defaultChecked className="select" />
-              Toggle
-            </label>
-            <label className="label">
-              <input type="checkbox" className="toggle" disabled />
-              Toggle disabled
-            </label>
           </div>
         </div>
       </div>
