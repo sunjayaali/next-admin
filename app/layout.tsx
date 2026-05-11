@@ -26,7 +26,7 @@ export default function Layout({
       {...mantineHtmlProps}
     >
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
         <Providers>{children}</Providers>

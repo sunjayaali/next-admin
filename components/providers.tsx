@@ -1,11 +1,9 @@
 "use client";
 
 import {
-  AutoCompleteProps,
-  AutoCompletePropsContext,
-  MultiSelectProps,
-  MultiSelectPropsContext,
-} from "@progress/kendo-react-dropdowns";
+  createTheme,
+  MantineProvider
+} from "@mantine/core";
 import {
   QueryClient,
   QueryClientProvider as QueryClientProviderBase,
@@ -14,59 +12,6 @@ import { ThemeProvider as ThemeProviderBase } from "@wrksz/themes";
 import { AllCommunityModule } from "ag-grid-community";
 import { AgGridProvider } from "ag-grid-react";
 import { FC, useState } from "react";
-
-function multiSelectProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <MultiSelectPropsContext.Provider
-      value={(props: MultiSelectProps) => {
-        return {
-          className: "border-none! shadow-none! text-inherit! bg-inherit!",
-          autoClose: false,
-          // tagRender: (_, tag: React.ReactElement<ChipProps>) => {
-          //   return cloneElement(tag, {
-          //     ...tag.props,
-          //     className: cn("badge! badge-ghost", tag.props.className),
-          //   });
-          // },
-          // itemRender: (li, itemProps) => {
-          //   const itemChildren = <>{itemProps.dataItem}</>;
-          //   return cloneElement(li, li.props, itemChildren);
-          // },
-          popupSettings: {
-            popupClass: "",
-            animate: false,
-          },
-          ...props,
-        };
-      }}
-    >
-      {children}
-    </MultiSelectPropsContext.Provider>
-  );
-}
-
-function AutoCompleteProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <AutoCompletePropsContext.Provider
-      value={(props: AutoCompleteProps) => {
-        return {
-          className: "border-none! shadow-none! text-inherit! bg-inherit!",
-          popupSettings: {
-            popupClass: "",
-            animate: false,
-          },
-          // itemRender: (li, itemProps) => {
-          //   const itemChildren = <>{itemProps.dataItem}</>;
-          //   return cloneElement(li, li.props, itemChildren);
-          // },
-          ...props,
-        };
-      }}
-    >
-      {children}
-    </AutoCompletePropsContext.Provider>
-  );
-}
 
 function agGridProvider({ children }: { children: React.ReactNode }) {
   const modules = [AllCommunityModule];
@@ -88,12 +33,17 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
+  const theme = createTheme({});
+
+  return <MantineProvider theme={theme} defaultColorScheme="auto">{children}</MantineProvider>;
+}
+
 const providers: FC<{ children: React.ReactNode }>[] = [
   ThemeProvider,
+  MantineProviderWrapper,
   QueryClientProvider,
   agGridProvider,
-  multiSelectProvider,
-  AutoCompleteProvider,
 ];
 
 export default function Providers({ children }: { children: React.ReactNode }) {

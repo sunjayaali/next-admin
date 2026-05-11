@@ -17,7 +17,7 @@ import {
   Stack,
   Text,
   Textarea,
-  TextInput,
+  TextInput
 } from "@mantine/core";
 
 export default function Page() {
@@ -42,7 +42,7 @@ export default function Page() {
 
   return (
     <div className="">
-      <SimpleGrid cols={2}>
+      <SimpleGrid cols={{ base: 1, xs: 2 }}>
         <Card withBorder>
           <Card.Section inheritPadding py="sm" withBorder>
             <Text fw={600}>Panel heading</Text>
@@ -103,11 +103,7 @@ export default function Page() {
                 <Radio.Group name="name">
                   <Group>
                     <Radio label="Radio" value="radio1-1" />
-                    <Radio
-                      label="Radio checked"
-                      value="radio1-2"
-                      defaultChecked
-                    />
+                    <Radio label="Radio checked" value="radio1-2" />
                     <Radio label="Radio disabled" value="radio1-3" disabled />
                     <Radio label="Radio color" value="radio1-4" color="teal" />
                   </Group>
