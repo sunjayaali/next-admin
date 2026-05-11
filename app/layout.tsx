@@ -3,7 +3,8 @@ import { cn } from "@/lib/utils";
 import "@progress/kendo-theme-default/dist/all.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+
+import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,11 @@ export default function Layout({
       lang="en"
       className={cn("antialiased", inter.className)}
       data-theme="light"
-      suppressHydrationWarning
+      {...mantineHtmlProps}
     >
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>

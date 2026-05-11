@@ -1,91 +1,84 @@
 "use client";
 
-import { HeartIcon } from "lucide-react";
+import { Button, Card, Group, Stack } from "@mantine/core";
 
 export default function Page() {
   return (
-    <div className="grid">
-      <div className="card shadow">
-        <div className="card-body">
-          <div className="card-title">Buttons</div>
-          <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-xs">Xsmall</button>
-            <button className="btn btn-sm">Small</button>
-            <button className="btn btn-md">Medium</button>
-            <button className="btn btn-lg">Large</button>
-            <button className="btn btn-xl">Xlarge</button>
-          </div>
-          <div className="divider" />
+    <Stack>
+      <Card shadow="xs" withBorder>
+        <Group gap="xs" justify="center">
+          <Button size="xs">Extra Small</Button>
+          <Button size="sm">Small</Button>
+          <Button size="md">Medium</Button>
+          <Button size="lg">Large</Button>
+          <Button size="xl">Extra Large</Button>
+        </Group>
+      </Card>
 
-          <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-neutral">Neutral</button>
-            <button className="btn btn-primary">Primary</button>
-            <button className="btn btn-secondary">Secondary</button>
-            <button className="btn btn-accent">Accent</button>
-            <button className="btn btn-info">Info</button>
-            <button className="btn btn-success">Success</button>
-            <button className="btn btn-warning">Warning</button>
-            <button className="btn btn-error">Error</button>
-          </div>
-          <div className="divider" />
+      <Card shadow="xs" withBorder>
+        <Group gap="xs" justify="center">
+          <Button size="compact-xs">Extra Small</Button>
+          <Button size="compact-sm">Small</Button>
+          <Button size="compact-md">Medium</Button>
+          <Button size="compact-lg">Large</Button>
+          <Button size="compact-xl">Extra Large</Button>
+        </Group>
+      </Card>
 
-          <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-soft">Default</button>
-            <button className="btn btn-soft btn-primary">Primary</button>
-            <button className="btn btn-soft btn-secondary">Secondary</button>
-            <button className="btn btn-soft btn-accent">Accent</button>
-            <button className="btn btn-soft btn-info">Info</button>
-            <button className="btn btn-soft btn-success">Success</button>
-            <button className="btn btn-soft btn-warning">Warning</button>
-            <button className="btn btn-soft btn-error">Error</button>
-          </div>
-          <div className="divider" />
+      <Card shadow="xs" withBorder>
+        <Group gap="xs" justify="center">
+          <Button color="red">Red</Button>
+          <Button color="green">Green</Button>
+          <Button color="blue">Blue</Button>
+          <Button color="yellow">Yellow</Button>
+          <Button color="cyan">Cyan</Button>
+          <Button color="orange">Orange</Button>
+          <Button color="pink">Pink</Button>
+          <Button color="gray">Gray</Button>
+          <Button color="dark">Dark</Button>
+          <Button color="indigo">Indigo</Button>
+        </Group>
+      </Card>
 
-          <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-outline">Default</button>
-            <button className="btn btn-outline btn-primary">Primary</button>
-            <button className="btn btn-outline btn-secondary">Secondary</button>
-            <button className="btn btn-outline btn-accent">Accent</button>
-            <button className="btn btn-outline btn-info">Info</button>
-            <button className="btn btn-outline btn-success">Success</button>
-            <button className="btn btn-outline btn-warning">Warning</button>
-            <button className="btn btn-outline btn-error">Error</button>
-          </div>
-          <div className="divider" />
+      <Card shadow="xs" withBorder>
+        <Group gap="xs" justify="center">
+          <Button variant="default">Default</Button>
+          <Button variant="filled">Filled</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="gradient">Gradient</Button>
+          <Button variant="light">Light</Button>
+          <Button variant="subtle">Subtle</Button>
+          <Button variant="transparent">Transparent</Button>
+        </Group>
+      </Card>
 
-          <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-dash">Default</button>
-            <button className="btn btn-dash btn-primary">Primary</button>
-            <button className="btn btn-dash btn-secondary">Secondary</button>
-            <button className="btn btn-dash btn-accent">Accent</button>
-            <button className="btn btn-dash btn-info">Info</button>
-            <button className="btn btn-dash btn-success">Success</button>
-            <button className="btn btn-dash btn-warning">Warning</button>
-            <button className="btn btn-dash btn-error">Error</button>
-          </div>
-          <div className="divider" />
+      <Card shadow="xs" withBorder>
+        <Group gap="xs" justify="center">
+          <Button.Group>
+            <Button variant="default">First</Button>
+            <Button variant="default">Second</Button>
+            <Button variant="default">Third</Button>
+          </Button.Group>
 
-          <div className="flex flex-wrap gap-2 items-center justify-center">
-            <button className="btn btn-ghost">Ghost</button>
-            <button className="btn btn-link">Link</button>
-            <button className="btn btn-square">
-              <HeartIcon />
-            </button>
-            <button className="btn btn-circle">
-              <HeartIcon />
-            </button>
-            <button className="btn">
-              <HeartIcon />
-            </button>
-            <button className="btn">
-              <span className="loading loading-spinner" />
-            </button>
-            <button className="btn btn-wide">Wide</button>
-            <button className="btn btn-block">Block</button>
-          </div>
-          <div className="divider" />
-        </div>
-      </div>
-    </div>
+          <Button.Group orientation="vertical">
+            <Button variant="default">First</Button>
+            <Button variant="default">Second</Button>
+            <Button variant="default">Third</Button>
+          </Button.Group>
+        </Group>
+      </Card>
+
+      <Card shadow="xs" withBorder>
+        <Group gap="xs" justify="center">
+          <Button loading>Loading</Button>
+          <Button loading loaderProps={{ type: "bars" }}>
+            Bars
+          </Button>
+          <Button loading loaderProps={{ type: "dots" }}>
+            Dots
+          </Button>
+        </Group>
+      </Card>
+    </Stack>
   );
 }
