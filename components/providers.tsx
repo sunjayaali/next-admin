@@ -1,14 +1,12 @@
 "use client";
 
-import {
-  createTheme,
-  MantineProvider
-} from "@mantine/core";
+import { Button, createTheme, MantineProvider, Text } from "@mantine/core";
+import { ContextModalProps, ModalsProvider } from "@mantine/modals";
+import { Notifications } from "@mantine/notifications";
 import {
   QueryClient,
   QueryClientProvider as QueryClientProviderBase,
 } from "@tanstack/react-query";
-import { ThemeProvider as ThemeProviderBase } from "@wrksz/themes";
 import { AllCommunityModule } from "ag-grid-community";
 import { AgGridProvider } from "ag-grid-react";
 import { FC, useState } from "react";
@@ -27,20 +25,48 @@ function QueryClientProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ThemeProvider({ children }: { children: React.ReactNode }) {
+function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
+  const theme = createTheme({
+    components: {
+      Modal: {
+        defaultProps: {
+          closeOnClickOutside: false,
+          withCloseButton: false,
+          centered: true,
+        },
+      },
+    },
+  });
+
   return (
-    <ThemeProviderBase themes={["light", "dark"]}>{children}</ThemeProviderBase>
+    <MantineProvider theme={theme} defaultColorScheme="auto">
+      <Notifications />
+      <ModalsProvider
+        modals={{
+          test: TestModal,
+        }}
+      >
+        {children}
+      </ModalsProvider>
+    </MantineProvider>
   );
 }
 
-function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
-  const theme = createTheme({});
-
-  return <MantineProvider theme={theme} defaultColorScheme="auto">{children}</MantineProvider>;
-}
+const TestModal = ({
+  context,
+  id,
+  innerProps,
+}: ContextModalProps<{ modalBody: string }>) => (
+  <>
+    <Text size="sm">{innerProps.modalBody}</Text>
+    <Button fullWidth mt="md" onClick={() => context.closeModal(id)}>
+      Close modal
+    </Button>
+  </>
+);
 
 const providers: FC<{ children: React.ReactNode }>[] = [
-  ThemeProvider,
+  // ThemeProvider,
   MantineProviderWrapper,
   QueryClientProvider,
   agGridProvider,
