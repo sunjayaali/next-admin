@@ -14,6 +14,10 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
+    label: "Home",
+    href: "/",
+  },
+  {
     label: "Components",
     children: [
       { label: "Buttons", href: "/components/buttons" },
