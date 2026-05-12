@@ -1,6 +1,6 @@
 "use client";
 
-import { MailIcon, SearchIcon } from "lucide-react";
+import { MailIcon } from "lucide-react";
 
 import {
   Autocomplete,
@@ -17,7 +17,7 @@ import {
   Stack,
   Text,
   Textarea,
-  TextInput
+  TextInput,
 } from "@mantine/core";
 
 export default function Page() {
@@ -113,80 +113,6 @@ export default function Page() {
           </Stack>
         </Card>
       </SimpleGrid>
-
-      <h1 className="font-title font-bold text-3xl">Forms</h1>
-      <div className="grid grid-1 sm:grid-cols-2 gap-4 items-start">
-        <div className="card shadow">
-          <div className="card-body">
-            <h2 className="card-title">Quick Example</h2>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Pick a file</legend>
-              <input type="file" className="file-input w-full" />
-              <label className="label">Max size 2MB</label>
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Datetime</legend>
-              <input
-                type="datetime-local"
-                className="input w-full "
-                placeholder="Enter password"
-              />
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Label</legend>
-              <label className="input w-full">
-                <span className="label">https://</span>
-                <input type="text" placeholder="URL" />
-              </label>
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Label</legend>
-              <label className="input w-full">
-                <SearchIcon />
-                <input type="search" placeholder="Search" />
-                <kbd className="kbd kbd-sm">⌘</kbd>
-                <kbd className="kbd kbd-sm">K</kbd>
-              </label>
-            </fieldset>
-
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Label</legend>
-              <label className="input w-full">
-                Path
-                <input type="text" placeholder="src/app/" />
-                <span className="badge badge-neutral badge-xs">Optional</span>
-              </label>
-            </fieldset>
-
-            <form>
-              <fieldset className="fieldset">
-                <legend className="fieldset-legend">Label</legend>
-                <div className="join">
-                  <div className="w-full">
-                    <label className="input w-full validator join-item">
-                      <MailIcon />
-                      <input
-                        type="email"
-                        className="w-full"
-                        placeholder="mail@site.com"
-                        required
-                      />
-                    </label>
-                    <div className="validator-hint hidden">
-                      Enter valid email address
-                    </div>
-                  </div>
-                  <button className="btn btn-neutral join-item">Join</button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
