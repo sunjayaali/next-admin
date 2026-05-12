@@ -2,9 +2,7 @@
 @import "@mantine/core/styles.css";
 /* @import "tailwind-preset-mantine"; */
 
-@plugin "daisyui" {
-  themes: all;
-}
+
 
 html {
   /* @apply text-base */
