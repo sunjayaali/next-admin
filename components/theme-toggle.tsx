@@ -22,7 +22,7 @@ export default function ThemeToggle() {
       }
       aria-label="Toggle color scheme"
     >
-      {computedColorScheme === "light" ? <SunIcon /> : <MoonIcon />}
+      {computedColorScheme === "light" ? <MoonIcon /> : <SunIcon />}
     </ActionIcon>
   );
 }

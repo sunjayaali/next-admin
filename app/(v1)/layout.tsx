@@ -23,6 +23,7 @@ const navItems: NavItem[] = [
       { label: "Buttons", href: "/components/buttons" },
       { label: "Forms", href: "/components/forms" },
       { label: "Modals", href: "/components/modals" },
+      { label: "Tables", href: "/components/tables" },
       { label: "Data Grid", href: "/components/datagrid" },
       { label: "Simple Table", href: "/components/simple-table" },
     ],
