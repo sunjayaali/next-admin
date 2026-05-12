@@ -2,9 +2,12 @@ import Providers from "@/components/providers";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/app/globals.css";
-
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
+import "tailwindcss";
+import '@mantine/core/styles.layer.css';
+import '@mantine/notifications/styles.css';
+import 'mantine-datatable/styles.layer.css';
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

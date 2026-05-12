@@ -7,14 +7,7 @@ import {
   QueryClient,
   QueryClientProvider as QueryClientProviderBase,
 } from "@tanstack/react-query";
-import { AllCommunityModule } from "ag-grid-community";
-import { AgGridProvider } from "ag-grid-react";
 import { FC, useState } from "react";
-
-function agGridProvider({ children }: { children: React.ReactNode }) {
-  const modules = [AllCommunityModule];
-  return <AgGridProvider modules={modules}>{children}</AgGridProvider>;
-}
 
 function QueryClientProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -49,7 +42,6 @@ function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
 const providers: FC<{ children: React.ReactNode }>[] = [
   MantineProviderWrapper,
   QueryClientProvider,
-  agGridProvider,
 ];
 
 export default function Providers({ children }: { children: React.ReactNode }) {
