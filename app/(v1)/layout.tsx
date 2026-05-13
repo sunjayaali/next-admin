@@ -1,7 +1,14 @@
 "use client";
 
 import ThemeToggle from "@/components/theme-toggle";
-import { AppShell, Burger, Group, NavLink, Text } from "@mantine/core";
+import {
+  AppShell,
+  Burger,
+  Group,
+  NavLink,
+  ScrollArea,
+  Text,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,10 +20,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  {
-    label: "Home",
-    href: "/",
-  },
+  { label: "Home", href: "/" },
   {
     label: "Components",
     children: [
@@ -59,7 +63,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
-        <RenderMenuItems items={navItems} pathname={pathname} />
+        <AppShell.Section component={ScrollArea}>
+          <RenderMenuItems items={navItems} pathname={pathname} />
+        </AppShell.Section>
       </AppShell.Navbar>
 
       <AppShell.Main>{children}</AppShell.Main>
