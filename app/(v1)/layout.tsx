@@ -28,6 +28,7 @@ const navItems: NavItem[] = [
       { label: "Forms", href: "/components/forms" },
       { label: "Modals", href: "/components/modals" },
       { label: "Tables", href: "/components/tables" },
+      { label: "Loading Overlay", href: "/components/loading-overlay" },
     ],
   },
 ];
