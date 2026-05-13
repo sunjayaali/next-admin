@@ -7,10 +7,11 @@ import {
   QueryClient,
   QueryClientProvider as QueryClientProviderBase,
 } from "@tanstack/react-query";
-import { FC, useState } from "react";
+import { FC } from "react";
+
+const queryClient = new QueryClient();
 
 function QueryClientProvider({ children }: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProviderBase client={queryClient}>
       {children}
@@ -34,7 +35,9 @@ function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
   return (
     <MantineProvider theme={theme} defaultColorScheme="auto">
       <Notifications />
-      <ModalsProvider modals={{}}>{children}</ModalsProvider>
+      <QueryClientProvider>
+        <ModalsProvider modals={{}}>{children}</ModalsProvider>
+      </QueryClientProvider>
     </MantineProvider>
   );
 }
