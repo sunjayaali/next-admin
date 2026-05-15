@@ -31,9 +31,20 @@ const navItems: NavItem[] = [
       { label: "Loading Overlay", href: "/components/loading-overlay" },
     ],
   },
+  {
+    label: "Antd",
+    children: [
+      { label: "Buttons", href: "/antd/buttons" },
+      { label: "Forms", href: "/antd/forms" },
+    ],
+  },
 ];
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const [opened, { toggle }] = useDisclosure();
 
@@ -79,7 +90,7 @@ function RenderMenuItems({
   pathname,
 }: {
   items: NavItem[];
-  pathname: string;
+  pathname: string | null;
 }) {
   return items.map((item) => {
     if (!item.children) {

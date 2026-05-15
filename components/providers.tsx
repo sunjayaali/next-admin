@@ -1,5 +1,6 @@
 "use client";
 
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
@@ -7,6 +8,9 @@ import {
   QueryClient,
   QueryClientProvider as QueryClientProviderBase,
 } from "@tanstack/react-query";
+import { useTheme } from "@wrksz/themes/client";
+import { ConfigProvider } from "antd";
+import { ThemeProvider } from "antd-style";
 import { FC } from "react";
 
 const queryClient = new QueryClient();
@@ -42,7 +46,20 @@ function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
+function AntdConfigProvider({ children }: { children: React.ReactNode }) {
+  const { resolvedTheme } = useTheme();
+
+  return (
+    <AntdRegistry>
+      <ConfigProvider theme={{}}>
+        <ThemeProvider appearance={resolvedTheme}>{children}</ThemeProvider>
+      </ConfigProvider>
+    </AntdRegistry>
+  );
+}
+
 const providers: FC<{ children: React.ReactNode }>[] = [
+  AntdConfigProvider,
   MantineProviderWrapper,
   QueryClientProvider,
 ];

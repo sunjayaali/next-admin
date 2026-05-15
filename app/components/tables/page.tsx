@@ -14,6 +14,7 @@ import { useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import { modals } from "@mantine/modals";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { Table } from "antd";
 import { EditIcon } from "lucide-react";
 import { DataTable } from "mantine-datatable";
 import { useState } from "react";
@@ -235,6 +236,30 @@ export default function Page() {
             setPage(1);
             setRecordsPerPage(r);
           }}
+        />
+
+        <Table<User>
+          scroll={{ x: "max-content" }}
+          rowKey={(user) => user.id}
+          loading={isFetching}
+          pagination={{
+            total: data?.totalRecords,
+            pageSizeOptions: [5, 10],
+            current: page,
+            showSizeChanger: true,
+            onChange: (p, r) => {
+              setPage(p);
+              setRecordsPerPage(r);
+            },
+          }}
+          dataSource={data?.users}
+          columns={[
+            { title: "Name", dataIndex: "name", key: "name" },
+            { title: "Username", dataIndex: "username", key: "username" },
+            { title: "Email", dataIndex: "email", key: "email" },
+            { title: "Phone", dataIndex: "phone", key: "phone" },
+            { title: "Website", dataIndex: "website", key: "website" },
+          ]}
         />
       </SimpleGrid>
     </>

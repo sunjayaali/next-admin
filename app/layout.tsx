@@ -1,11 +1,13 @@
 import Providers from "@/components/providers";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import "@mantine/core/styles.layer.css";
 import "@mantine/notifications/styles.css";
+import { ThemeProvider } from "@wrksz/themes/next";
 import "mantine-datatable/styles.layer.css";
+import { Metadata } from "next";
+import { Inter } from "next/font/google";
+import ClientLayout from "./client-layout";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,7 +33,15 @@ export default function Layout({
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <ThemeProvider
+          defaultTheme="light"
+          storage="cookie"
+          enableSystem={false}
+        >
+          <Providers>
+            <ClientLayout>{children}</ClientLayout>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
