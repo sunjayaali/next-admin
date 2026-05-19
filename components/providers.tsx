@@ -1,16 +1,13 @@
 "use client";
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { createTheme, MantineProvider } from "@mantine/core";
-import { ModalsProvider } from "@mantine/modals";
-import { Notifications } from "@mantine/notifications";
 import {
   QueryClient,
   QueryClientProvider as QueryClientProviderBase,
 } from "@tanstack/react-query";
 import { useTheme } from "@wrksz/themes/client";
-import { ConfigProvider } from "antd";
-import { ThemeProvider } from "antd-style";
+import { ConfigProvider, theme } from "antd";
+
 import { FC } from "react";
 
 const queryClient = new QueryClient();
@@ -23,36 +20,20 @@ function QueryClientProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MantineProviderWrapper({ children }: { children: React.ReactNode }) {
-  const theme = createTheme({
-    components: {
-      Modal: {
-        defaultProps: {
-          closeOnClickOutside: false,
-          withCloseButton: false,
-          centered: true,
-        },
-      },
-    },
-  });
-
-  return (
-    <MantineProvider theme={theme} defaultColorScheme="auto">
-      <Notifications />
-      <QueryClientProvider>
-        <ModalsProvider modals={{}}>{children}</ModalsProvider>
-      </QueryClientProvider>
-    </MantineProvider>
-  );
-}
-
 function AntdConfigProvider({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme();
 
   return (
     <AntdRegistry>
-      <ConfigProvider theme={{}}>
-        <ThemeProvider appearance={resolvedTheme}>{children}</ThemeProvider>
+      <ConfigProvider
+        theme={{
+          algorithm:
+            resolvedTheme === "dark"
+              ? theme.darkAlgorithm
+              : theme.defaultAlgorithm,
+        }}
+      >
+        {children}
       </ConfigProvider>
     </AntdRegistry>
   );
@@ -60,7 +41,6 @@ function AntdConfigProvider({ children }: { children: React.ReactNode }) {
 
 const providers: FC<{ children: React.ReactNode }>[] = [
   AntdConfigProvider,
-  MantineProviderWrapper,
   QueryClientProvider,
 ];
 
