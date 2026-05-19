@@ -1,10 +1,6 @@
 import Providers from "@/components/providers";
 import { cn } from "@/lib/utils";
-import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
-import "@mantine/core/styles.layer.css";
-import "@mantine/notifications/styles.css";
 import { ThemeProvider } from "@wrksz/themes/next";
-import "mantine-datatable/styles.layer.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ClientLayout from "./client-layout";
@@ -25,13 +21,10 @@ export default function Layout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn("antialiased", inter.className)}
-      data-theme="light"
-      {...mantineHtmlProps}
     >
-      <head>
-        <ColorSchemeScript defaultColorScheme="auto" />
-      </head>
+      <head></head>
       <body>
         <ThemeProvider
           defaultTheme="light"
